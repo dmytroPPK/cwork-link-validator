@@ -12,10 +12,6 @@ if __name__ == "__main__":
         # app = LinkValidator('test.pdf')
         print('Resource to check - ', app.resource)
         app.run()
-<<<<<<< HEAD
-        # app.
-=======
->>>>>>> 69ce743 (Solid is done)
     except Exception as ex:
         print("Error was occured:")
         print(f' ... {ex}')
