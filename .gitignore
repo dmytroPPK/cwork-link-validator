@@ -1,10 +1,13 @@
 .idea/
 __pycache__/
 .pytest_cache/
-*.pdf
 logs.txt
+env/*
+env/lib64
 .env/
-/lesson13/homework/test-1.py
+venv/
+.vemv/
 valid_links.txt
 wrong_links.txt
 broken_links.txt
+output/*
