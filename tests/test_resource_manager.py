@@ -1,8 +1,10 @@
 import pytest
+import logging
 
 from app.services import ResourceManager
 
 
+@pytest.mark.resource_manager
 @pytest.mark.parametrize(
     ('resource','expected'),
     (
@@ -14,25 +16,30 @@ from app.services import ResourceManager
         ('trulala', 'underfined')
     )
 )
+@pytest.mark.resource_manager
 def test_check_type(resource, expected):
     assert ResourceManager.check_type(resource) == expected
 
 
 
+@pytest.mark.resource_manager
 @pytest.mark.parametrize(
     'pdf_path',
     [
         'test.pdf'
     ]
 )
+@pytest.mark.resource_manager
 def test_pdf_path_isvalid(pdf_path):
     assert ResourceManager.pdf_path_isvalid(pdf_path)
 
 
+@pytest.mark.resource_manager
 @pytest.mark.negative_test
 def test_pdf_path_isvalid_negative():
     assert not ResourceManager.pdf_path_isvalid('trulala.pdf')
 
+@pytest.mark.resource_manager
 @pytest.mark.parametrize(
     'url',
     [
@@ -45,6 +52,8 @@ def test_pdf_path_isvalid_negative():
 def test_url_name_isvalid(url):
     assert ResourceManager.url_name_isvalid(url)
 
+@pytest.mark.resource_manager
+@pytest.mark.negative_test
 @pytest.mark.parametrize(
     'url',
     [
@@ -53,10 +62,11 @@ def test_url_name_isvalid(url):
         'http:/www.fword.com'
     ]
 )
-@pytest.mark.negative_test
-def test_url_name_isvalid_negative(url):
+def test_url_name_isvalid_negative(url, request):
     assert not ResourceManager.url_name_isvalid(url)
 
+
+@pytest.mark.resource_manager
 @pytest.mark.parametrize(
     ('resource', 'side', 'expected_type'),
     [
@@ -66,11 +76,13 @@ def test_url_name_isvalid_negative(url):
         ('https://site.com', 'url', 'url'),
     ]
 )
+@pytest.mark.resource_manager
 def test_resource_validate(resource, side, expected_type):
     r,t = ResourceManager.resource_validate(resource, side)
     assert (r == resource) and (t == expected_type)
 
 @pytest.mark.negative_test
+@pytest.mark.resource_manager
 @pytest.mark.parametrize(
     ('resource', 'side'),
     [

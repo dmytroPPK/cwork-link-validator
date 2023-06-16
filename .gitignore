@@ -13,3 +13,4 @@ broken_links.txt
 output/*
 test_artifacts/*
 tests/test_artifacts/*
+logs/*

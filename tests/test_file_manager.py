@@ -5,6 +5,7 @@ import os
 
 
 
+@pytest.mark.file_manager
 @pytest.mark.parametrize(
     ('folder', 'file', 'links'),
     (
